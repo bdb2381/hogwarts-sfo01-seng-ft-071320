@@ -6,9 +6,9 @@ class HogTile extends React.Component {
     someOtherState: [],
   };
 
-  pigName = this.props.hogDetails.name.toLowerCase().split(" ").join("_");
+  // pigName = this.props.hogDetails.name.toLowerCase().split(" ").join("_");
 
-  pigImage = require(`../hog-imgs/${this.pigName}.jpg`);
+  // pigImage = require(`../hog-imgs/${this.pigName}.jpg`);
 
   handleClick = () => {
     this.setState((prev) => ({
@@ -18,12 +18,15 @@ class HogTile extends React.Component {
 
   render() {
     const { hogDetails } = this.props;
+    const pigName = hogDetails.name.toLowerCase().split(" ").join("_");
+
+    const pigImage = require(`../hog-imgs/${pigName}.jpg`);
 
     return (
       <div>
         <div onClick={this.handleClick}>
           <div>{hogDetails.name}</div>
-          <img src={this.pigImage} />
+          <img src={pigImage} />
         </div>
         {/* details */}
         {this.state.showDetails && (
